@@ -182,8 +182,8 @@ export default function Home() {
       }}>
         {/* TV Outer Bezel */}
         <div style={{
-          width: '500px',
-          height: '340px',
+          width: 'min(90vw, 500px)',
+          height: 'min(60vw, 340px)',
           background: '#2a2a2a',
           borderRadius: '24px',
           padding: '24px',
@@ -227,7 +227,7 @@ export default function Home() {
             <h1 style={{
               position: 'relative',
               zIndex: 2,
-              fontSize: '42px',
+              fontSize: 'clamp(24px, 6vw, 42px)',
               fontWeight: 900,
               color: '#fff',
               textAlign: 'center',
@@ -393,24 +393,29 @@ export default function Home() {
       )}
 
       {/* Top Menu Bar */}
-      <div style={{ 
-        height: '32px', 
-        width: '100%', 
-        background: 'rgba(0, 0, 0, 0.35)', 
-        backdropFilter: 'blur(24px)',
-        WebkitBackdropFilter: 'blur(24px)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-        display: 'flex',
-        alignItems: 'center',
-        padding: '0 16px',
-        fontSize: '13.5px',
-        fontWeight: '500',
-        color: 'rgba(255, 255, 255, 0.95)',
-        zIndex: 100,
-        position: 'absolute',
-        top: 0,
-        boxShadow: '0 1px 5px rgba(0,0,0,0.2)'
-      }}>
+      <div 
+        className="mac-menubar"
+        style={{
+          height: '32px',
+          background: 'rgba(0, 0, 0, 0.4)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          display: 'flex',
+          alignItems: 'center',
+          padding: '0 16px',
+          fontSize: '13px',
+          color: '#fff',
+          zIndex: 1000,
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          borderBottom: '1px solid rgba(255,255,255,0.1)',
+          overflowX: 'auto',
+          whiteSpace: 'nowrap'
+        }}
+      >
+        <style>{`.mac-menubar::-webkit-scrollbar { display: none; }`}</style>
         <strong style={{ marginRight: '16px', fontSize: '15px', cursor: 'default' }}> Anmol's Portfolio</strong>
         
         <div style={{ position: 'relative', marginRight: '4px' }}>

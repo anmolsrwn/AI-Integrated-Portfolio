@@ -58,6 +58,8 @@ export default function Window({ title, icon = "💻", onClose, children, width 
         left: '50%', 
         width, 
         height, 
+        maxWidth: '95vw',
+        maxHeight: '85vh',
         transform: `translate(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px))`,
         display: 'flex', 
         flexDirection: 'column',
