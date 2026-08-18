@@ -48,7 +48,7 @@ export default function Home() {
   const [isSpotlightOpen, setIsSpotlightOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleContextMenu = (e) => {
+  const handleContextMenu = (e: any) => {
     e.preventDefault();
     setContextMenu({ show: true, x: e.pageX, y: e.pageY });
     if (isProjectsMenuOpen) setIsProjectsMenuOpen(false);
@@ -98,7 +98,7 @@ export default function Home() {
 
   // Spotlight Keyboard Shortcut
   useEffect(() => {
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e: any) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
         setIsSpotlightOpen(prev => !prev);
@@ -112,7 +112,7 @@ export default function Home() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const openWindow = (windowName) => {
+  const openWindow = (windowName: string) => {
     setIsResumeOpen(windowName === 'resume');
     setIsProj1Open(windowName === 'proj1');
     setIsProj2Open(windowName === 'proj2');
@@ -749,7 +749,7 @@ export default function Home() {
 
       {/* Ask me Window */}
       {isChatOpen && (
-        <Window icon={<GeminiIcon />} title="Ask me" onClose={() => setIsChatOpen(false)} width="400px" height="600px" left="60%" top="15%">
+        <Window icon={<GeminiIcon /> as any} title="Ask me" onClose={() => setIsChatOpen(false)} width="400px" height="600px" left="60%" top="15%">
           <Chat />
         </Window>
       )}
