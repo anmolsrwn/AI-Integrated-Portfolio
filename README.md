@@ -2,8 +2,7 @@
 
 Welcome to my personal portfolio! This is a highly interactive, retro-modern web application built with a macOS-inspired windowing system and a fully integrated AI assistant. 
 
-### 🌟 [Live Demo - Click Here!](https://your-vercel-deployment-url.vercel.app/) 
-*(Replace the link above with your actual Vercel link once it's deployed!)*
+### 🌟 [Live Demo - Click Here!](https://ai-integrated-portfolio-rho.vercel.app/)
 
 ---
 
