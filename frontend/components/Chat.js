@@ -197,8 +197,22 @@ export default function Chat() {
               padding: '12px 16px',
               borderRadius: "18px 18px 18px 4px",
               color: 'var(--text-secondary)',
-              fontSize: '14px'
+              fontSize: '14px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
             }}>
+              <style>{`
+                @keyframes spin { 100% { transform: rotate(360deg); } }
+              `}</style>
+              <div style={{
+                width: '14px',
+                height: '14px',
+                border: '2px solid rgba(255,255,255,0.2)',
+                borderTopColor: '#fff',
+                borderRadius: '50%',
+                animation: 'spin 1s linear infinite'
+              }} />
               thinking...
             </div>
           </div>
