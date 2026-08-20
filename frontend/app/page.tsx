@@ -287,8 +287,7 @@ export default function Home() {
         border: '1px solid rgba(255, 255, 255, 0.1)',
         padding: '10px 16px',
         boxShadow: '0 10px 40px rgba(0,0,0,0.5)',
-        cursor: 'text'
-      }} onClick={() => setIsChatOpen(true)}>
+      }}>
         <div style={{ fontSize: '20px', marginRight: '14px', opacity: 0.8, display: 'flex', alignItems: 'center' }}>
           <GeminiIcon />
         </div>
@@ -296,7 +295,6 @@ export default function Home() {
           type="text"
           value={homeSearchQuery}
           onChange={(e) => setHomeSearchQuery(e.target.value)}
-          onClick={() => setIsChatOpen(true)}
           onKeyDown={(e) => {
             if (e.key === 'Enter' && homeSearchQuery.trim()) {
               setChatInitialMessage(homeSearchQuery.trim());
