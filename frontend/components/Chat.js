@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 
-export default function Chat() {
+export default function Chat({ initialMessage }) {
   const [messages, setMessages] = useState([]); 
   const [input, setInput] = useState("");       
   const [isLoading, setIsLoading] = useState(false);
@@ -12,8 +12,15 @@ export default function Chat() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  async function processStream(query) {
-    const newMessages = [...messages, { role: "user", text: query }];
+  // Handle initial message on mount
+  useEffect(() => {
+    if (initialMessage && messages.length === 0) {
+      processStream(initialMessage, []); // Pass empty array so it doesn't use stale state
+    }
+  }, [initialMessage]);
+
+  async function processStream(query, currentMessages = messages) {
+    const newMessages = [...currentMessages, { role: "user", text: query }];
     // Instantly show user message. Don't add AI message yet so 'thinking...' sits directly underneath.
     setMessages(newMessages); 
     setIsLoading(true);
@@ -66,13 +73,14 @@ export default function Chat() {
     setIsLoading(false);
   }
 
-  async function sendMessage(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!input) return;
-    const currentInput = input;
+    if (!input.trim() || isLoading) return;
+
+    const query = input.trim();
     setInput("");
-    await processStream(currentInput);
-  }
+    await processStream(query);
+  };
 
   async function sendQuickQuery(query) {
     await processStream(query);
@@ -211,7 +219,7 @@ export default function Chat() {
       </div>
 
       {/* Input Area (iMessage style) */}
-      <form onSubmit={sendMessage} style={{ 
+      <form onSubmit={handleSubmit} style={{ 
         padding: '20px', 
         borderTop: '1px solid var(--glass-border)',
         background: 'rgba(0,0,0,0.2)',

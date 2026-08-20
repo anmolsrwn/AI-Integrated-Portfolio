@@ -44,6 +44,10 @@ export default function Home() {
   const [contextMenu, setContextMenu] = useState({ show: false, x: 0, y: 0 });
   const [hueRotate, setHueRotate] = useState(0);
   
+  // Google-style Search State
+  const [homeSearchQuery, setHomeSearchQuery] = useState("");
+  const [chatInitialMessage, setChatInitialMessage] = useState("");
+  
   // Spotlight State
   const [isSpotlightOpen, setIsSpotlightOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -263,6 +267,77 @@ export default function Home() {
             <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ff3b30', boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.5), 0 0 8px rgba(255,59,48,0.5)' }} />
             <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#555', boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.5)' }} />
           </div>
+        </div>
+      </div>
+
+      {/* Central Google-style Search Bar */}
+      <div style={{
+        position: 'absolute',
+        top: '65%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 'min(90vw, 560px)',
+        zIndex: 2,
+        display: 'flex',
+        alignItems: 'center',
+        background: 'rgba(25, 25, 25, 0.6)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        borderRadius: '30px',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        padding: '10px 16px',
+        boxShadow: '0 10px 40px rgba(0,0,0,0.5)',
+      }}>
+        <div style={{ fontSize: '20px', marginRight: '14px', opacity: 0.8, display: 'flex', alignItems: 'center' }}>
+          <GeminiIcon />
+        </div>
+        <input 
+          type="text"
+          value={homeSearchQuery}
+          onChange={(e) => setHomeSearchQuery(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && homeSearchQuery.trim()) {
+              setChatInitialMessage(homeSearchQuery.trim());
+              setHomeSearchQuery("");
+              setIsChatOpen(true);
+            }
+          }}
+          placeholder="Ask about Anmol..."
+          style={{
+            flex: 1,
+            background: 'transparent',
+            border: 'none',
+            outline: 'none',
+            color: 'white',
+            fontSize: '16px',
+            fontFamily: 'inherit'
+          }}
+        />
+        <div 
+          style={{
+            background: homeSearchQuery.trim() ? 'var(--ios-blue)' : 'rgba(255,255,255,0.1)',
+            borderRadius: '50%',
+            width: '36px',
+            height: '36px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            cursor: homeSearchQuery.trim() ? 'pointer' : 'default',
+            marginLeft: '12px',
+            transition: 'background 0.2s'
+          }}
+          onClick={() => {
+            if (homeSearchQuery.trim()) {
+              setChatInitialMessage(homeSearchQuery.trim());
+              setHomeSearchQuery("");
+              setIsChatOpen(true);
+            }
+          }}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
         </div>
       </div>
 
@@ -762,7 +837,7 @@ export default function Home() {
       {/* Ask me Window */}
       {isChatOpen && (
         <Window icon={<GeminiIcon /> as any} title="Ask me" onClose={() => setIsChatOpen(false)} width="400px" height="600px" left="60%" top="15%">
-          <Chat />
+          <Chat initialMessage={chatInitialMessage} />
         </Window>
       )}
 
