@@ -410,9 +410,7 @@ export default function Home() {
           top: 0,
           left: 0,
           width: '100%',
-          borderBottom: '1px solid rgba(255,255,255,0.1)',
-          overflowX: 'auto',
-          whiteSpace: 'nowrap'
+          borderBottom: '1px solid rgba(255,255,255,0.1)'
         }}
       >
         <style>{`.mac-menubar::-webkit-scrollbar { display: none; }`}</style>
@@ -437,18 +435,21 @@ export default function Home() {
           {isProjectsMenuOpen && (
             <div style={{ 
               position: 'absolute', 
-              top: '24px', 
+              top: '100%', 
               left: 0, 
-              background: 'rgba(30, 30, 30, 0.95)', 
-              backdropFilter: 'blur(10px)',
-              borderRadius: '6px',
-              padding: '6px 0',
-              minWidth: '160px',
-              boxShadow: '0 8px 24px rgba(0,0,0,0.5)',
-              border: '1px solid var(--glass-border)',
-              zIndex: 200,
-              color: 'white'
+              paddingTop: '4px',
+              zIndex: 200
             }}>
+              <div style={{
+                background: 'rgba(30, 30, 30, 0.95)', 
+                backdropFilter: 'blur(10px)',
+                borderRadius: '6px',
+                padding: '6px 0',
+                minWidth: '160px',
+                boxShadow: '0 8px 24px rgba(0,0,0,0.5)',
+                border: '1px solid var(--glass-border)',
+                color: 'white'
+              }}>
               <div 
                 style={{ padding: '6px 16px', cursor: 'pointer', transition: 'background 0.2s' }} 
                 onClick={() => { openWindow('proj1'); setIsProjectsMenuOpen(false); }}
@@ -467,6 +468,7 @@ export default function Home() {
                 onMouseOver={(e) => e.currentTarget.style.background = 'var(--ios-blue)'}
                 onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}
               >🎓 InsightEd</div>
+              </div>
             </div>
           )}
         </div>
