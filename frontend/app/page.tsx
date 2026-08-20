@@ -838,7 +838,7 @@ export default function Home() {
 
       {/* Ask me Window */}
       {isChatOpen && (
-        <Window icon={<GeminiIcon /> as any} title="Ask me" onClose={() => setIsChatOpen(false)} width="400px" height="600px" left="60%" top="15%">
+        <Window icon={<GeminiIcon /> as any} title="Ask me" onClose={() => setIsChatOpen(false)} width="480px" height="600px" left="60%" top="15%">
           <Chat initialMessage={chatInitialMessage} />
         </Window>
       )}
