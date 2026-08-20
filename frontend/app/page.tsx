@@ -177,7 +177,7 @@ export default function Home() {
       {/* Funky TV Layer */}
       <div style={{
         position: 'absolute',
-        top: '55%',
+        top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
         zIndex: 0,
