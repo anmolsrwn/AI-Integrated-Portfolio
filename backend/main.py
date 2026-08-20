@@ -91,7 +91,7 @@ async def chat_endpoint(request: ChatRequest):
     try:
         # Call OpenAI
         response = client.chat.completions.create(
-            model="openai/gpt-oss-20b",
+            model="llama3-8b-8192",
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": request.message}
