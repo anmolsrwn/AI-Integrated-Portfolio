@@ -30,6 +30,17 @@ body {
   align-items: center;
 }
 
+@keyframes drop-down-open {
+  from {
+    opacity: 0;
+    margin-top: -30px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
 /* Glassmorphism utility class for a macOS window effect */
 .mac-window {
   background: var(--glass-bg);
@@ -39,6 +50,7 @@ body {
   border-radius: 20px;
   box-shadow: var(--glass-shadow);
   overflow: hidden;
+  animation: drop-down-open 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .mac-titlebar {
