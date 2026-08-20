@@ -273,7 +273,7 @@ export default function Home() {
       {/* Central Google-style Search Bar */}
       <div style={{
         position: 'absolute',
-        top: '20%',
+        top: '12%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
         width: 'min(90vw, 560px)',
