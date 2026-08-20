@@ -1,5 +1,5 @@
 import os
-from openai import OpenAI
+from groq import Groq
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
@@ -18,9 +18,8 @@ api_key = os.environ.get("OPENAI_API_KEY")
 if not api_key:
     print("Warning: OPENAI_API_KEY not found!")
     
-client = OpenAI(
+client = Groq(
     api_key=api_key,
-    base_url="https://api.groq.com/openai/v1"
 )
 
 # 2. Initialize our Python Server
@@ -91,7 +90,7 @@ async def chat_endpoint(request: ChatRequest):
     try:
         # Call OpenAI
         response = client.chat.completions.create(
-            model="llama3-8b-8192",
+            model="openai/gpt-oss-20b",
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": request.message}
@@ -110,5 +109,5 @@ async def chat_endpoint(request: ChatRequest):
         return StreamingResponse(stream_generator(), media_type="text/event-stream")
         
     except Exception as e:
-        print("Error connecting to OpenAI:", e)
+        print("Error connecting to Groq:", e)
         raise HTTPException(status_code=500, detail="Could not connect to the AI brain.")
