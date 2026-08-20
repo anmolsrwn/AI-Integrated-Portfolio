@@ -282,12 +282,12 @@ export default function Home() {
         alignItems: 'center',
         background: 'rgba(25, 25, 25, 0.6)',
         backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
         borderRadius: '30px',
         border: '1px solid rgba(255, 255, 255, 0.1)',
         padding: '10px 16px',
         boxShadow: '0 10px 40px rgba(0,0,0,0.5)',
-      }}>
+        cursor: 'pointer'
+      }} onClick={() => setIsChatOpen(true)}>
         <div style={{ fontSize: '20px', marginRight: '14px', opacity: 0.8, display: 'flex', alignItems: 'center' }}>
           <GeminiIcon />
         </div>
