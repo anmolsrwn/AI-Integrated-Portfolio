@@ -32,6 +32,10 @@ export default function Chat({ initialMessage }) {
         body: JSON.stringify({ message: query }),
       });
 
+      if (!response.ok) {
+        throw new Error("Backend error");
+      }
+
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let aiText = "";
