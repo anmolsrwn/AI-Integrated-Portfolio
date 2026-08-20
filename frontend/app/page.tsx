@@ -418,7 +418,11 @@ export default function Home() {
         <style>{`.mac-menubar::-webkit-scrollbar { display: none; }`}</style>
         <strong style={{ marginRight: '16px', fontSize: '15px', cursor: 'default' }}> Anmol's Portfolio</strong>
         
-        <div style={{ position: 'relative', marginRight: '4px' }}>
+        <div 
+          style={{ position: 'relative', marginRight: '4px' }}
+          onMouseEnter={() => setIsProjectsMenuOpen(true)}
+          onMouseLeave={() => setIsProjectsMenuOpen(false)}
+        >
           <span 
             style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', padding: '4px 10px', borderRadius: '4px', transition: 'background 0.2s' }} 
             onClick={() => setIsProjectsMenuOpen(!isProjectsMenuOpen)}
@@ -498,7 +502,7 @@ export default function Home() {
         </a>
 
         <a 
-          href="https://leetcode.com/u/anmolsrwn"
+          href="https://leetcode.com/u/pD3W3ISgna/"
           target="_blank"
           rel="noreferrer"
           style={{ display: 'flex', alignItems: 'center', gap: '6px', marginRight: '4px', color: 'inherit', textDecoration: 'none', padding: '4px 10px', borderRadius: '4px', transition: 'background 0.2s' }}
@@ -584,9 +588,10 @@ export default function Home() {
                 Bhilai, Chhattisgarh, India | +91 9340641769 | anmolsarwan2@gmail.com
               </p>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', marginTop: '10px' }}>
-                <a href="#" style={{ color: 'var(--ios-blue)', textDecoration: 'none' }}>LinkedIn</a>
-                <a href="#" style={{ color: 'var(--ios-blue)', textDecoration: 'none' }}>GitHub</a>
-                <a href="#" style={{ color: 'var(--ios-blue)', textDecoration: 'none' }}>LeetCode</a>
+                <a href="mailto:anmolsarwan2@gmail.com" target="_blank" rel="noreferrer" style={{ color: 'var(--ios-blue)', textDecoration: 'none' }}>Email</a>
+                <a href="https://www.linkedin.com/in/anmolsarwan" target="_blank" rel="noreferrer" style={{ color: 'var(--ios-blue)', textDecoration: 'none' }}>LinkedIn</a>
+                <a href="https://github.com/anmolsrwn" target="_blank" rel="noreferrer" style={{ color: 'var(--ios-blue)', textDecoration: 'none' }}>GitHub</a>
+                <a href="https://leetcode.com/u/pD3W3ISgna/" target="_blank" rel="noreferrer" style={{ color: 'var(--ios-blue)', textDecoration: 'none' }}>LeetCode</a>
               </div>
             </div>
 
